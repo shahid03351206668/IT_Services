@@ -9,7 +9,7 @@ import json
 import sys
 import frappe
 from frappe.model.document import Document
-from frappe.email.queue import send_one
+# from frappe.email.queue import send_one
 
 
 class ITInvoiceProcessing(Document):
@@ -1167,7 +1167,8 @@ def send_email(comm_name):
     sys.setdefaultencoding('UTF8')
     email_name = frappe.db.sql("""Select name from `tabEmail Queue` where communication=%s""", (comm_name))
     if len(email_name) > 0:
-        send_one(email_name[0][0], now=True)
+        # send_one(email_name[0][0], now=True)
+        pass
 
 
 @frappe.whitelist()

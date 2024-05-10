@@ -12,11 +12,9 @@ def after_install():
 
         if domain:
             domain = domain[0][0]
-
-            if domain in "Services":
-                frappe.db.sql("""Update `tabDocType` set restrict_to_domain=NULL where module='IT Services'""")
-
-            else:
-                frappe.db.sql("""Update `tabDocType` set restrict_to_domain='IT Service' where module='IT Services'""")
-
-            frappe.clear_cache()
+            if domain:
+                if domain in "Services":
+                    frappe.db.sql("""Update `tabDocType` set restrict_to_domain=NULL where module='IT Services'""")
+                else:
+                    frappe.db.sql("""Update `tabDocType` set restrict_to_domain='IT Service' where module='IT Services'""")
+                frappe.clear_cache()
